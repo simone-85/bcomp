@@ -15,26 +15,32 @@ void displayHelp(){
 	std::cout << "---------------------------------------------\n";
 
 }
+
 void version(const char *_progrver, int *_argc){
 	std::cout << "BComp ver " << _progrver << "\n";
 	std::cout << "no. arg: " << *_argc << "\n";
-	std::cout << "Parsed Arguments: ";
 }
+
 void checkparms(int *_argc, char *_argv[]){
+	std::cout << "Parsed Arguments: ";
 	for(int i = 1; i < *_argc; i++){
 		std::cout << i << " " << _argv[i] << std::endl;
 		if(std::string(_argv[i]) == "-h"){
+			std::cout << "\n";
 			displayHelp();
 			return;
 		}else if(std::string(_argv[i]) == "-o"){
+			//TODO: Add function pointer
 			std::cout << "-o parsed as " << i << " parameter\n";
-
+			return;
 		}else if(std::string(_argv[i]) == "-i"){
+			//TODO: Add function pointer
 			std::cout << "-i parsed as " << i << " parameter\n";
+			return;
 		}
 	}
-	std::cout << "No valid arguments parsed\n";
-	//displayHelp();
+	std::cout << "\n";
+	displayHelp();
 	return;
 }
 

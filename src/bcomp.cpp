@@ -1,3 +1,20 @@
+/*
+ * BComp, a general purpose file compressor
+ * Copyright (C) 2023 Simone Mastroianni
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include <iostream>
 #include <cstdint>
 #include <fstream>
@@ -5,13 +22,7 @@
 #include <iomanip>
 #include "utils/utils.h"
 
-//BComp, a general purpose file compressor
-//Author: Simone Mastroianni
-//Released under GNU General Public License v3.0
-//for more details, read LICENSE
-
 const char* progrver = "0.1a";
-const char* author = "Simone Mastroianni";
 
 //ANALYZER PART:
 struct byteanalyzed{
@@ -37,10 +48,11 @@ unsigned char* loadbuffer(char* path){
 int main(int argc, char *argv[]){
 	version(progrver, &argc);
 	checkparms(&argc, argv);
+
 	/*
 	   for(int i = 0; i < len; i++){
 	   std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(buffer[i]) << " ";
 	   }
 	   std::cout << "\n";
-	   */
+	*/
 }
