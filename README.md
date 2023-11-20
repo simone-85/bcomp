@@ -1,2 +1,2 @@
 # BComp
-**B**inary**Comp**ressor, _a Huffman based generic compressor_
+**B**inary**Comp**ressor, _a Huffman based general purpose compressor_
