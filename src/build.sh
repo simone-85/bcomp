@@ -1,4 +1,4 @@
 #!/bin/sh
-g++ -c utils/utils.cpp -o utils/utils.o
-ar rcs utils/utils.a utils/utils.o
-g++ bcomp.cpp -o bcomp -L utils/ -l:utils.a
+g++ -c utils/libbcomputils.cpp -o utils/libbcomputils.o
+ar rcs utils/libbcomputils.a utils/libbcomputils.o
+g++ bcomp.cpp -o bcomp -L utils/ -l:libbcomputils.a
