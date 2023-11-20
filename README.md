@@ -1,2 +1,2 @@
-# bcomp
-A general purpose compressor
+# BComp
+BinaryCompressor, a Huffman based generic compressor
