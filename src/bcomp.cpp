@@ -38,5 +38,5 @@ int main(int argc, char *argv[]){
 	unsigned char* buffer = loadbuffer(returnpath(in));
 	printBuffer(buffer);
 	countoccurences(buffer);
-	
+	return 0;	
 }
