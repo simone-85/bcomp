@@ -117,7 +117,9 @@ size_t countoccurences(unsigned char* __buffer){
 				count++;
 			}	
 		}
+		if(count != 0){
 		std::cout << std::hex << std::setw(2) << i << " is repeated: " << std::dec << count << "\n"; 
+		}
 		//std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(__buffer[i]);
 		//std::cout << " is repeated: " << std::dec << count << "\n";	
 		count = 0;

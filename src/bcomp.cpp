@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
 	std::cout << "inpath: " << returnpath(in) << "\n";
 //std::cout << "outpath: " << returnpath(out) << "\n";
 	unsigned char* buffer = loadbuffer(returnpath(in));
-	printBuffer(buffer);
+	//printBuffer(buffer);
 	countoccurences(buffer);
 	return 0;	
 }
