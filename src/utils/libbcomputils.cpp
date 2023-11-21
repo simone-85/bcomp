@@ -94,7 +94,6 @@ void checkparms(int *_argc, char *_argv[]){
 		}
 	}
 	std::cout << "\n";
-	return;
 }
 size_t return_buf_len(){
 	return buf_len;
@@ -108,25 +107,21 @@ void printBuffer(unsigned char* __buffer){
 	return;
 }
 
-size_t countoccurences(unsigned char* __buffer, size_t pos){
+size_t countoccurences(unsigned char* __buffer){
 	size_t count = 0;
-	unsigned char* buf_no_rep = new unsigned char[buf_len];
-	bool repeated;
-	buf_no_rep[0] = __buffer[0];
-	//TODO: Finish this part of code (check how many occurences are there):
-	for(size_t i = 1; i < buf_len; i++){
-		for(size_t j = 1; j < buf_len; j++){
-			if(__buffer[i] == buf_no_rep[j]){
-				
+	for(size_t i = 0; i < 256; i++){
+		for(size_t j = 0; j < buf_len; j++){
+			//std::cout << std::hex << std::setw(2) << std::setfill('0')<< static_cast<int>(__buffer[j]);
+		       	//std::cout << ", " << std::hex << i << "\n";
+			if(__buffer[j] == i){
+				count++;
 			}	
 		}
-		if(__buffer[i] == __buffer[j]){
-			count++;
-		}
-	}
+		std::cout << std::hex << std::setw(2) << i << " is repeated: " << std::dec << count << "\n"; 
+		//std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(__buffer[i]);
+		//std::cout << " is repeated: " << std::dec << count << "\n";	
+		count = 0;
 }
-std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(__buffer[pos]);
-std::cout << " is repeated: " << std::dec << count << "\n";
 return count;
 }
 
