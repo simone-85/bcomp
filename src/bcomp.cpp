@@ -24,10 +24,6 @@ const char* progrver = "0.1a";
 
 //ANALYZER PART:
 
-struct byteanalyzed{
-	unsigned char byte_content;
-	int8_t no_occ;
-};
 
 int main(int argc, char *argv[]){
 	version(progrver, &argc);
@@ -37,6 +33,7 @@ int main(int argc, char *argv[]){
 //std::cout << "outpath: " << returnpath(out) << "\n";
 	unsigned char* buffer = loadbuffer(returnpath(in));
 	//printBuffer(buffer);
-	countoccurences(buffer);
+	byteanalyzed* buffercount = countoccurences(buffer);
+	bubblesort(*buffercount);
 	return 0;	
 }

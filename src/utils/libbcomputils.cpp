@@ -26,6 +26,8 @@ char *inpath;
 char *outpath;
 size_t buf_len;
 
+
+
 void displayHelp(){
 	std::cout << "USAGE: bcomp -i [input_path] -o [output_path]\n";
 	std::cout << "---------------------------------------------\n";
@@ -107,24 +109,46 @@ void printBuffer(unsigned char* __buffer){
 	return;
 }
 
-size_t countoccurences(unsigned char* __buffer){
+byteanalyzed* bubblesort(byteanalyzed __buffer[]){
+	unsigned char temp1 ;
+	uint8_t temp2;
+	for(uint8_t j = 0; j < 255; j++){ //until 256-1
+		for(uint8_t i = 0; i < 255; i++){ //until 256-1
+			if(__buffer[i].no_occ > __buffer[i+1].no_occ){
+				//swap byte_content:
+				temp1 = static_cast<unsigned char>(__buffer[i].byte_content);
+				__buffer[i].byte_content = __buffer[i+1].byte_content;
+				__buffer[i+1].byte_content = static_cast<unsigned char>(temp1);
+				//swap no_occ:
+				temp2 = __buffer[i].no_occ;
+				__buffer[i].no_occ = __buffer[i+1].no_occ;
+				__buffer[i+1].no_occ = temp2;
+			}
+		}
+	}
+	for(uint8_t i = 0; i < 256; i++){
+		std::cout << "__buffer[" << i << "].byte_content: " << __buffer[i].byte_content << " ; ";
+		std::cout << "__buffer[" << i << "].no_occ: " << __buffer[i].no_occ << "\n"; 
+	}
+	return __buffer;
+}
+
+
+byteanalyzed* countoccurences(unsigned char* __buffer){
 	size_t count = 0;
-	for(size_t i = 0; i < 256; i++){
+	byteanalyzed buf_count[256];
+	for(int8_t i = 0; i < 256; i++){
 		for(size_t j = 0; j < buf_len; j++){
-			//std::cout << std::hex << std::setw(2) << std::setfill('0')<< static_cast<int>(__buffer[j]);
-		       	//std::cout << ", " << std::hex << i << "\n";
 			if(__buffer[j] == i){
 				count++;
-			}	
+			}
 		}
-		if(count != 0){
+		buf_count[i].byte_content = i;
+		buf_count[i].no_occ = count;
 		std::cout << std::hex << std::setw(2) << i << " is repeated: " << std::dec << count << "\n"; 
-		}
-		//std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(__buffer[i]);
-		//std::cout << " is repeated: " << std::dec << count << "\n";	
 		count = 0;
-}
-return count;
+	}
+	return buf_count;
 }
 
 unsigned char* loadbuffer(char* path){

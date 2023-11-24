@@ -22,6 +22,12 @@
 #include <cstdint>
 #include <cstddef>
 
+struct byteanalyzed{
+	unsigned char byte_content;
+int8_t no_occ;
+};
+
+
 //Functions:
 enum pathtype{in, out};
 void displayHelp();
@@ -31,6 +37,8 @@ void version(const char *_progrver, int *_argc);
 char* returnpath(pathtype pt);
 unsigned char* loadbuffer(char *path);
 void printBuffer(unsigned char* __buffer);
-size_t countoccurences(unsigned char* __buffer);
 size_t return_buf_len();
+byteanalyzed* bubblesort(byteanalyzed __buffer);
+byteanalyzed* countoccurences(unsigned char* __buffer);
+
 #endif
