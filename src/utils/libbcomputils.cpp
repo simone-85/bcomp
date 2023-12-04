@@ -109,48 +109,53 @@ void printBuffer(unsigned char* __buffer){
 	return;
 }
 
-/*
-byteanalyzed* bubblesort(byteanalyzed __buffer[]){
-	unsigned char temp1 ;
-	uint8_t temp2;
-	for(uint8_t j = 0; j < 255; j++){ //until 256-1
-		for(uint8_t i = 0; i < 255; i++){ //until 256-1
-			if(__buffer[i].no_occ > __buffer[i+1].no_occ){
-				//swap byte_content:
-				temp1 = static_cast<unsigned char>(__buffer[i].byte_content);
-				__buffer[i].byte_content = __buffer[i+1].byte_content;
-				__buffer[i+1].byte_content = static_cast<unsigned char>(temp1);
-				//swap no_occ:
-				temp2 = __buffer[i].no_occ;
-				__buffer[i].no_occ = __buffer[i+1].no_occ;
-				__buffer[i+1].no_occ = temp2;
+
+unsigned char* bubblesort(unsigned char* _countarray){
+	size_t temp;
+	for(int i = 0; i < 512-1; i++){ 
+		for(int j = 0; j < 512-1; j++){
+			if(i % 2 != 0 && j % 2 != 0){
+				if(_countarray[j] > _countarray[j+2]){
+					temp = _countarray[j+2];
+					_countarray[j+2] = _countarray[j];
+					_countarray[j] = temp;
+				///////////////////////////////////////////
+					temp = _countarray[j+1];
+					_countarray[j+1] = _countarray[j-1];
+					_countarray[j-1] = temp;
+				}
 			}
 		}
 	}
-	for(uint8_t i = 0; i < 256; i++){
-		std::cout << "__buffer[" << i << "].byte_content: " << __buffer[i].byte_content << " ; ";
-		std::cout << "__buffer[" << i << "].no_occ: " << __buffer[i].no_occ << "\n"; 
+	for(int i = 0; i < 512; i++){
+		if (i % 2 == 0) {
+			std::cout << std::hex << std::setw(2) << static_cast<int>(_countarray[i]) << ": ";
+		}else if (i % 2 != 0){
+		       	std::cout << " " << std::dec << static_cast<int>(_countarray[i]) << "\n";
+		}
 	}
-	return __buffer;
+	return _countarray;
 }
-*/
 
-unsigned char[] countoccurences(unsigned char* __buffer){
+
+
+
+
+unsigned char* countoccurences(unsigned char* __buffer){
 	size_t count = 0;
-	unsigned char buf_count[256];
-	for(int8_t i = 0; i < 256; i++){
+	unsigned char* merged_buffer = new unsigned char[512];
+	for(int i = 0; i < 256; i++){
 		for(size_t j = 0; j < buf_len; j++){
 			if(__buffer[j] == i){
 				count++;
 			}
 		}
-		//buf_count[i]->byte_content = i;
-		//buf_count[i]->no_occ = count;
-		buf_count[i] = count;
+		merged_buffer[i*2] = i;
+		merged_buffer[i*2+1] = count;
 		std::cout << std::hex << std::setw(2) << i << " is repeated: " << std::dec << count << "\n"; 
 		count = 0;
 	}
-	return buf_count;
+	return merged_buffer;
 }
 
 

@@ -32,8 +32,9 @@ int main(int argc, char *argv[]){
 	std::cout << "inpath: " << returnpath(in) << "\n";
 	//std::cout << "outpath: " << returnpath(out) << "\n";
 	unsigned char* buffer = loadbuffer(returnpath(in));
-	printBuffer(buffer);
-	
-	//byteanalyzed* buffercount = countoccurences(buffer);
+	std::cin.get();
+	unsigned char* countarray = countoccurences(buffer);
+	unsigned char* sorted = bubblesort(countarray);
+		
 	return 0;	
 }

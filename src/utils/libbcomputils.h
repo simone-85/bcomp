@@ -39,7 +39,7 @@ char* returnpath(pathtype pt);
 unsigned char* loadbuffer(char *path);
 void printBuffer(unsigned char* __buffer);
 size_t return_buf_len();
-//byteanalyzed* bubblesort(byteanalyzed __buffer);
-//byteanalyzed* countoccurences(unsigned char* __buffer);
+unsigned char* bubblesort(unsigned char* _countarray);
+unsigned char* countoccurences(unsigned char* __buffer);
 
 #endif
