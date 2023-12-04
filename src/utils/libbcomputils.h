@@ -22,11 +22,12 @@
 #include <cstdint>
 #include <cstddef>
 
+/*
 struct byteanalyzed{
 	unsigned char byte_content;
-int8_t no_occ;
+	int8_t no_occ;
 };
-
+*/
 
 //Functions:
 enum pathtype{in, out};
@@ -38,7 +39,7 @@ char* returnpath(pathtype pt);
 unsigned char* loadbuffer(char *path);
 void printBuffer(unsigned char* __buffer);
 size_t return_buf_len();
-byteanalyzed* bubblesort(byteanalyzed __buffer);
-byteanalyzed* countoccurences(unsigned char* __buffer);
+//byteanalyzed* bubblesort(byteanalyzed __buffer);
+//byteanalyzed* countoccurences(unsigned char* __buffer);
 
 #endif

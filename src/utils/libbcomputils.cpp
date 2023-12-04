@@ -109,6 +109,7 @@ void printBuffer(unsigned char* __buffer){
 	return;
 }
 
+/*
 byteanalyzed* bubblesort(byteanalyzed __buffer[]){
 	unsigned char temp1 ;
 	uint8_t temp2;
@@ -132,24 +133,26 @@ byteanalyzed* bubblesort(byteanalyzed __buffer[]){
 	}
 	return __buffer;
 }
+*/
 
-
-byteanalyzed* countoccurences(unsigned char* __buffer){
+unsigned char[] countoccurences(unsigned char* __buffer){
 	size_t count = 0;
-	byteanalyzed buf_count[256];
+	unsigned char buf_count[256];
 	for(int8_t i = 0; i < 256; i++){
 		for(size_t j = 0; j < buf_len; j++){
 			if(__buffer[j] == i){
 				count++;
 			}
 		}
-		buf_count[i].byte_content = i;
-		buf_count[i].no_occ = count;
+		//buf_count[i]->byte_content = i;
+		//buf_count[i]->no_occ = count;
+		buf_count[i] = count;
 		std::cout << std::hex << std::setw(2) << i << " is repeated: " << std::dec << count << "\n"; 
 		count = 0;
 	}
 	return buf_count;
 }
+
 
 unsigned char* loadbuffer(char* path){
 	std::ifstream in(path, std::ios::binary);
@@ -162,6 +165,7 @@ unsigned char* loadbuffer(char* path){
 	in.seekg(0, std::ios::beg);
 	unsigned char* _buffer = new unsigned char[buf_len];
 	in.read(reinterpret_cast<char*>(_buffer), buf_len);	
+	//in.read(&_buffer[0], buf_len);
 	std::cout << "\n";
 	return _buffer;	
 }
