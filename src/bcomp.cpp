@@ -30,10 +30,10 @@ int main(int argc, char *argv[]){
 	checkparms(&argc, argv);
 	//until here, all good :-)
 	std::cout << "inpath: " << returnpath(in) << "\n";
-//std::cout << "outpath: " << returnpath(out) << "\n";
+	//std::cout << "outpath: " << returnpath(out) << "\n";
 	unsigned char* buffer = loadbuffer(returnpath(in));
-	//printBuffer(buffer);
-	byteanalyzed* buffercount = countoccurences(buffer);
-	bubblesort(*buffercount);
+	printBuffer(buffer);
+	
+	//byteanalyzed* buffercount = countoccurences(buffer);
 	return 0;	
 }
